@@ -68,13 +68,13 @@ static void init_linker(void)
         add_option(&ld_args, "-dynamic-linker");
         add_option(&ld_args, "/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2");
         if (context.pic) {
-            add_option(&ld_args, "/usr/lib/x86_64-linux-gnu/Scrt1.o");
+            add_option(&ld_args, "/usr/lib/Scrt1.o");
         } else {
-            add_option(&ld_args, "/usr/lib/x86_64-linux-gnu/crt1.o");
+            add_option(&ld_args, "/usr/lib/crt1.o");
         }
     }
 
-    add_option(&ld_args, "/usr/lib/x86_64-linux-gnu/crti.o");
+    add_option(&ld_args, "/usr/lib/crti.o");
     add_option(&ld_args, "-L/usr/lib/x86_64-linux-gnu");
 #elif MUSL
     if (!is_shared) {
@@ -135,7 +135,7 @@ INTERNAL int invoke_linker(void)
 #if __OpenBSD__
     add_option(&ld_args, "/usr/lib/crtend.o");
 #elif GLIBC
-    add_option(&ld_args, "/usr/lib/x86_64-linux-gnu/crtn.o");
+    add_option(&ld_args, "/usr/lib/crtn.o");
 #elif MUSL
     add_option(&ld_args, "/usr/lib/crtn.o");
 #endif
