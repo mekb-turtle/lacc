@@ -66,7 +66,7 @@ static void init_linker(void)
         add_option(&ld_args, "-e");
         add_option(&ld_args, "_start");
         add_option(&ld_args, "-dynamic-linker");
-        add_option(&ld_args, "/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2");
+        add_option(&ld_args, "/lib/ld-linux-x86-64.so.2");
         if (context.pic) {
             add_option(&ld_args, "/usr/lib/Scrt1.o");
         } else {
@@ -75,7 +75,7 @@ static void init_linker(void)
     }
 
     add_option(&ld_args, "/usr/lib/crti.o");
-    add_option(&ld_args, "-L/usr/lib/x86_64-linux-gnu");
+    add_option(&ld_args, "-L/usr/lib");
 #elif MUSL
     if (!is_shared) {
         add_option(&ld_args, "-e");
