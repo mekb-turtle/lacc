@@ -292,6 +292,9 @@ static int add_input_file(const char *name)
         ptr = strrchr(name, '.');
         if (ptr && (ptr[1] == 'c' || ptr[1] == 'i') && ptr[2] == '\0') {
             file.language = LANG_C;
+        } else if (ptr && ((ptr[1] == 's' && ptr[2] == '\0') || (
+                (ptr[1] == 'a' && ptr[2] == 's' && ptr[3] == 'm' && ptr[4] == '\0')))) {
+            file.language = LANG_ASM;
         }
     }
 
